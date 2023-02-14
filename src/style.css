@@ -1,0 +1,171 @@
+:root {
+  --bg-color: #e8fcff;
+  --text-color: #000;
+  color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body,
+#app {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#app {
+  isolation: isolate;
+  margin: 0 auto;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  width: max-content;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.app-title {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.app-tree .tree-list {
+  display: flex;
+  padding-top: 20px;
+  position: relative;
+  list-style-type: none;
+}
+
+.app-tree .tree-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 5px 0 5px;
+}
+
+.app-tree .node-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6f4f1;
+  border: 1px solid #ccc;
+  color: #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.app-tree .tree-node::before,
+.app-tree .tree-node::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 20px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+.app-tree .tree-node::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+.app-tree .tree-node:only-child::after,
+.app-tree .tree-node:only-child::before {
+  display: none;
+}
+
+.app-tree .tree-node:only-child {
+  padding-top: 0;
+}
+
+.app-tree .tree-node:first-child::before,
+.app-tree .tree-node:last-child::after {
+  border: 0 none;
+}
+
+.app-tree .tree-node:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  -moz-border-radius: 0 5px 0 0;
+}
+.app-tree .tree-node:first-child::after {
+  border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  -moz-border-radius: 5px 0 0 0;
+}
+
+.app-tree .tree-list .tree-list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.app-tree .tree-node .node-data:hover,
+.app-tree .tree-node .node-data:hover + .tree-list .tree-node .node-data {
+  background: #c8e4f8;
+  color: #000;
+  border: 1px solid #94a0b4;
+  cursor: default;
+}
+
+.app-tree .tree-node .node-data:hover + .tree-list .tree-node::after,
+.app-tree .tree-node .node-data:hover + .tree-list .tree-node::before,
+.app-tree .tree-node .node-data:hover + .tree-list::before,
+.app-tree .tree-node .node-data:hover + .tree-list .tree-list::before {
+  border-color: #94a0b4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #122f3e;
+    --text-color: #fff;
+  }
+}
